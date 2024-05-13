@@ -1,1 +1,36 @@
-BANANA SPLIT
+<nz-layout>
+  <nz-header>
+    <nz-space>
+      <div class="pr-4">
+        <img src="../assets/img/TOY STORE.svg" alt="TOY STORE LOGO" />
+      </div>
+
+      <button
+        nz-button
+        class="theme-button"
+        nzType="text"
+        nzShape="circle"
+        [nz-tooltip]="
+          'Turn ' + (currentTheme === 'dark' ? 'on' : 'off') + ' the lights'
+        "
+        nzTooltipPlacement="bottomRight"
+        (click)="changeTheme()"
+      >
+        <i
+          nz-icon
+          nzType="bulb"
+          [class]="{
+            fill: currentTheme === 'dark'
+          }"
+          [nzTheme]="currentTheme === 'dark' ? 'fill' : 'outline'"
+        ></i>
+      </button>
+    </nz-space>
+  </nz-header>
+
+  <nz-layout>
+    <nz-content>
+      <div class="inner-content">Bill is a cat.</div>
+    </nz-content>
+  </nz-layout>
+</nz-layout>

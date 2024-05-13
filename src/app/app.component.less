@@ -1,0 +1,19 @@
+@import "mixin";
+
+.themeMixin({
+  :host {
+    nz-layout {
+      min-height: 100vh;
+
+      > nz-layout {
+        padding: @padding-sm;
+      }
+    }
+
+    .theme-button {
+      position: absolute;
+      right: @padding-md;
+      top: @padding-md;
+    }
+  }
+});
