@@ -1,13 +1,13 @@
-<nz-layout>
+<nz-layout class="base">
   <nz-header>
-    <nz-space>
-      <div class="pr-4">
-        <img src="../assets/img/TOY STORE.svg" alt="TOY STORE LOGO" />
-      </div>
+    <div class="pr-4">
+      <img src="../assets/img/TOY STORE.svg" alt="TOY STORE LOGO" />
+    </div>
 
+    <nz-space class="action-block" nzAlign="center" [nzSize]="2">
       <button
+        *nzSpaceItem
         nz-button
-        class="theme-button"
         nzType="text"
         nzShape="circle"
         [nz-tooltip]="
@@ -25,12 +25,29 @@
           [nzTheme]="currentTheme === 'dark' ? 'fill' : 'outline'"
         ></i>
       </button>
+
+      <a
+        *nzSpaceItem
+        nz-button
+        nzType="text"
+        nzShape="circle"
+        [routerLink]="['/', 'shopping-cart', 'menu', 'en']"
+      >
+        <span nz-icon nzType="shopping-cart" nzTheme="outline"></span>
+      </a>
+
+      <button *nzSpaceItem nz-button nzType="link">
+        {{ user.isLoggedIn ? greeting : "login" }}
+        <nz-avatar nzSize="small" nzIcon="user" class="ml-2"></nz-avatar>
+      </button>
     </nz-space>
   </nz-header>
 
   <nz-layout>
     <nz-content>
-      <div class="inner-content">Bill is a cat.</div>
+      <div class="inner-content">
+        <router-outlet></router-outlet>
+      </div>
     </nz-content>
   </nz-layout>
 </nz-layout>

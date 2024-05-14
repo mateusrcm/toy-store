@@ -1,5 +1,5 @@
 {
-  "toys": [
+  "products": [
     {
       "id": 1,
       "name": "Barbie",
@@ -9,17 +9,17 @@
       "avaliationsCount": 1
     }
   ],
-  "toys_images": [
+  "product_images": [
     {
       "id": 1,
-      "toyId": 1,
+      "productId": 1,
       "url": "base/64"
     }
   ],
-  "avaliations": [
+  "product_avaliations": [
     {
       "id": 1,
-      "toyId": 1,
+      "productId": 1,
       "rate": 5,
       "comment": "Very good toy, the size is just perfect",
       "userId": 30
@@ -27,7 +27,8 @@
   ],
   "users": [
     {
-      "name": "John Pearson",
+      "firstName": "John",
+      "lastName": "Pearson",
       "birthDate": "1990-05-05T00:00:00.000",
       "picture": null,
       "userName": "jpearson",
@@ -35,7 +36,8 @@
       "profile": 3
     },
     {
-      "name": "John Purchase",
+      "firstName": "John",
+      "lastName": "Purchase",
       "birthDate": "1990-01-01T00:00:00.000",
       "picture": null,
       "userName": "jpurchase",
@@ -43,7 +45,8 @@
       "profile": 2
     },
     {
-      "name": "John Pearson",
+      "firstName": "John",
+      "lastName": "Pearson",
       "birthDate": "1980-04-04T00:00:00.000",
       "picture": null,
       "userName": "admin",

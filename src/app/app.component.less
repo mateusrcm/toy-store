@@ -2,18 +2,19 @@
 
 .themeMixin({
   :host {
-    nz-layout {
+    nz-layout.base {
       min-height: 100vh;
+      overflow: hidden;
 
       > nz-layout {
         padding: @padding-sm;
       }
     }
 
-    .theme-button {
+    .action-block {
       position: absolute;
-      right: @padding-md;
-      top: @padding-md;
+      right: 55px;
+      top: 0;
     }
   }
 });
