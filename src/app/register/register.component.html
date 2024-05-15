@@ -1,64 +1,162 @@
 <section class="register-form-wrapper">
   <form
-    class="register-form"
     nz-form
+    class="register-form"
     nzLayout="vertical"
-    [formGroup]="validateForm"
+    [formGroup]="registerForm"
     (ngSubmit)="submitForm()"
   >
+    <button
+      nz-button
+      class="pl-0 pt-0"
+      nzType="link"
+      type="button"
+      [routerLink]="['/', 'login']"
+    >
+      <i nz-icon nzType="arrow-left"></i>
+      Go back to login
+    </button>
+
     <div nz-row nzJustify="center" nzAlign="middle">
       <h1 nz-typography>REGISTER</h1>
     </div>
 
-    <div nz-row nzJustify="center" nzAlign="middle">
-      <nz-avatar nzSize="large" nzIcon="user"></nz-avatar>
+    <div nz-row nzJustify="center" nzAlign="middle" class="mb-4">
+      <nz-avatar [nzSize]="100" nzIcon="user"></nz-avatar>
+    </div>
+
+    <div nz-row [nzGutter]="16" class="mb-2">
+      <div nz-col nzSpan="12">
+        <nz-form-item class="mb-0">
+          <nz-form-label nzFor="firstName">First Name</nz-form-label>
+
+          <nz-form-control nzErrorTip="This field cannot be empty!">
+            <nz-input-group nzPrefixIcon="user">
+              <input nz-input formControlName="firstName" />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+      <div nz-col nzSpan="12">
+        <nz-form-item class="mb-0">
+          <nz-form-label nzFor="lastName">Last name</nz-form-label>
+
+          <nz-form-control nzErrorTip="This field cannot be empty!">
+            <nz-input-group nzPrefixIcon="user">
+              <input nz-input formControlName="lastName" />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+
+    <div nz-row [nzGutter]="16" class="mb-2">
+      <div nz-col nzLg="12" nzXs="24">
+        <nz-form-item class="mb-0">
+          <nz-form-label nzFor="userName">Username</nz-form-label>
+
+          <nz-form-control nzErrorTip="This field cannot be empty!">
+            <nz-input-group nzPrefixIcon="user">
+              <input nz-input formControlName="userName" />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+      <div nz-col nzLg="12" nzXs="24">
+        <nz-form-item class="mb-0">
+          <nz-form-label nzFor="mail">E-mail</nz-form-label>
+
+          <nz-form-control [nzErrorTip]="emailErrorMessage">
+            <nz-input-group nzPrefixIcon="mail">
+              <input nz-input formControlName="mail" />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+
+    <div nz-row [nzGutter]="16" class="mb-2" formGroupName="passwords">
+      <div nz-col nzSpan="12">
+        <nz-form-item class="mb-0">
+          <nz-form-label nzFor="password">Password</nz-form-label>
+          <nz-form-control nzErrorTip="This field cannot be empty!">
+            <nz-input-group nzPrefixIcon="lock" [nzSuffix]="suffixTemplate">
+              <input
+                nz-input
+                formControlName="password"
+                [type]="passwordVisible ? 'text' : 'password'"
+              />
+            </nz-input-group>
+
+            <ng-template #suffixTemplate>
+              <span
+                nz-icon
+                [nzType]="passwordVisible ? 'eye-invisible' : 'eye'"
+                (click)="passwordVisible = !passwordVisible"
+              ></span>
+            </ng-template>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+      <div nz-col nzSpan="12">
+        <nz-form-item class="mb-0">
+          <nz-form-label nzFor="confirmPassword">
+            Confirm Password
+          </nz-form-label>
+
+          <nz-form-control [nzErrorTip]="passwordErrorMessage">
+            <nz-input-group nzPrefixIcon="lock" [nzSuffix]="suffixTemplate">
+              <input
+                nz-input
+                formControlName="confirmPassword"
+                [type]="confirmPasswordVisible ? 'text' : 'password'"
+              />
+            </nz-input-group>
+
+            <ng-template #suffixTemplate>
+              <span
+                nz-icon
+                [nzType]="confirmPasswordVisible ? 'eye-invisible' : 'eye'"
+                (click)="confirmPasswordVisible = !confirmPasswordVisible"
+              ></span>
+            </ng-template>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
     </div>
 
     <nz-form-item class="mb-2">
-      <nz-form-label nzFor="firstName">First Name</nz-form-label>
-      <nz-form-control>
-        <input nz-input name="firstName" type="firstName" id="firstName" />
-      </nz-form-control>
-    </nz-form-item>
-
-    <nz-form-item class="mb-2">
-      <nz-form-label nzFor="lastName">Last name</nz-form-label>
-      <nz-form-control>
-        <input nz-input name="lastName" type="lastName" id="lastName" />
-      </nz-form-control>
-    </nz-form-item>
-
-    <nz-form-item class="mb-2">
-      <nz-form-label nzFor="mail">E-mail</nz-form-label>
-      <nz-form-control>
-        <input nz-input name="mail" type="mail" id="mail" />
-      </nz-form-control>
-    </nz-form-item>
-
-    <nz-form-item class="mb-2">
-      <nz-form-label nzFor="userName">Username</nz-form-label>
-      <nz-form-control>
-        <input nz-input name="userName" type="userName" id="userName" />
-      </nz-form-control>
-    </nz-form-item>
-
-    <nz-form-item class="mb-2">
-      <nz-form-label nzFor="password">First Name</nz-form-label>
-      <nz-form-control>
-        <input nz-input name="password" type="password" id="password" />
-      </nz-form-control>
-    </nz-form-item>
-
-    <nz-form-item class="mb-2">
       <nz-form-label nzFor="birthDate">Birth Date</nz-form-label>
-      <nz-form-control>
+
+      <nz-form-control nzErrorTip="This field cannot be empty!">
         <nz-date-picker
-          class="ks"
-          name="birthDate"
-          type="birthDate"
-          id="birthDate"
+          class="w-100"
+          formControlName="birthDate"
         ></nz-date-picker>
       </nz-form-control>
     </nz-form-item>
+
+    <div nz-row nzAlign="middle" nzJustify="end">
+      <button nz-button [nzType]="'primary'">Register</button>
+    </div>
   </form>
 </section>
+
+<ng-template #passwordErrorMessage let-control>
+  @if (control.errors?.['required']) {
+  <span>This field cannot be empty!</span>
+  } @else if (control.errors?.['passwordMismatch']) {
+  <span>Passwords do not match!</span>
+  }
+</ng-template>
+
+<ng-template #emailErrorMessage let-control>
+  @if (control.errors?.['required']) {
+  <span>This field cannot be empty!</span>
+  } @else if (control.errors?.['email']) {
+  <span>This must be a E-mail</span>
+  }
+</ng-template>

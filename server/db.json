@@ -27,9 +27,10 @@
   ],
   "users": [
     {
+      "id": 1,
       "firstName": "John",
       "lastName": "Pearson",
-      "birthDate": "1990-05-05T00:00:00.000",
+      "birthDate": "1990-05-05T00:00:00.000Z",
       "picture": null,
       "mail": "jpearson@gmail.com",
       "userName": "jpearson",
@@ -37,9 +38,10 @@
       "profile": "Client"
     },
     {
+      "id": 2,
       "firstName": "John",
       "lastName": "Purchase",
-      "birthDate": "1990-01-01T00:00:00.000",
+      "birthDate": "1990-01-01T00:00:00.000Z",
       "picture": null,
       "mail": "jpurchase@gmail.com",
       "userName": "jpurchase",
@@ -47,14 +49,26 @@
       "profile": "Seller"
     },
     {
+      "id": 3,
       "firstName": "John",
       "lastName": "Pearson",
-      "birthDate": "1980-04-04T00:00:00.000",
+      "birthDate": "1980-04-04T00:00:00.000Z",
       "picture": null,
       "mail": "admin@gmail.com",
       "userName": "admin",
       "password": "admin",
       "profile": "Admin"
+    },
+    {
+      "firstName": "Mateus",
+      "lastName": "Martins",
+      "birthDate": "2024-05-15T18:27:59.800Z",
+      "picture": "",
+      "mail": "mateus.rc.martins@gmail.com",
+      "userName": "mateusrc",
+      "password": "mateusrc",
+      "profile": "Client",
+      "id": 4
     }
   ],
   "orders": [

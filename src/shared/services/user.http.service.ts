@@ -16,12 +16,24 @@ export class UserHttpService {
   constructor(private http: HttpClient) {}
 
   login(username: string, password: string): Observable<User> {
-    const url = `${BASE_URL}/users?userName=${username}&password=${password} `;
+    const url = `${BASE_URL}/users?userName=${username}&password=${password}`;
 
     return this.http.get<User[]>(url).pipe(
       map((users: User[]) => {
         return users[0];
       })
     );
+  }
+
+  createAccount(user: User): Observable<User> {
+    const url = `${BASE_URL}/users`;
+
+    fetch(url, {
+      method: 'POST',
+      body: JSON.stringify(user),
+      headers: { 'Content-Type': 'application/json' },
+    });
+
+    return this.http.post<User>(url, user);
   }
 }

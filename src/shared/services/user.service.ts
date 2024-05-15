@@ -29,26 +29,19 @@ export class UserService {
 
   login(username: string, password: string): Observable<User> {
     return this.userHttp.login(username, password).pipe(
-      map((result: User) => {
-        result.password = null;
-
-        return result;
-      }),
       tap((result: User) => {
-        this.firstName = result.firstName;
-        this.lastName = result.lastName;
-        this.birthDate = result.birthDate;
-        this.picture = result.picture;
-        this.mail = result.mail;
-        this.userName = result.userName;
-        this.profile = result.profile;
-
-        this.isLoggedIn = true;
+        this.assignProps(result);
       })
     );
   }
 
-  createAccount(username: string, password: string): void {}
+  createAccount(user: User, shouldLogin: boolean = false): Observable<User> {
+    return this.userHttp.createAccount(user).pipe(
+      tap((result: User) => {
+        if (shouldLogin) this.assignProps(result);
+      })
+    );
+  }
 
   logout(): void {
     this.isLoggedIn = false;
@@ -61,5 +54,17 @@ export class UserService {
     this.profile = null!;
 
     this.router.navigate(['/']);
+  }
+
+  private assignProps(user: User): void {
+    this.firstName = user.firstName;
+    this.lastName = user.lastName;
+    this.birthDate = user.birthDate;
+    this.picture = user.picture;
+    this.mail = user.mail;
+    this.userName = user.userName;
+    this.profile = user.profile;
+
+    this.isLoggedIn = true;
   }
 }
