@@ -7,7 +7,7 @@
   b: bottom;
 };
 
-each(range(5), {
+each(range(0,5), {
   each(@sides-set, .(@v, @k, @i){
     .p-@{value}, .p@{k}-@{value} {
       padding-@{v}: (@value * 4px);
@@ -18,3 +18,6 @@ each(range(5), {
     }
   });
 });
+
+@white: #f1f1f1;
+@black: #151515;

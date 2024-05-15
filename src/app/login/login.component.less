@@ -1,0 +1,26 @@
+@import url("mixin");
+
+.themeMixin({
+  :host{
+    section.login-form-wrapper {
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      
+      height: 88vh;
+      width: 100%;
+    }
+    
+    form.login-form {
+      padding: @padding-lg @padding-md;
+      background-color: @login-bg-color;
+      box-shadow: @shadow-2;
+      max-width: 400px;
+      width: 80%;
+    }
+
+    .register-button {
+      padding: @padding-sm 0px;
+    }
+  }
+});

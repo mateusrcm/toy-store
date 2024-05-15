@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ThemeType } from '../models/theme';
+import { ThemeType } from '../models/theme.type';
 
 export const themes: ThemeType[] = ['dark', 'light'];
 

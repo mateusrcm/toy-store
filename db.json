@@ -31,27 +31,30 @@
       "lastName": "Pearson",
       "birthDate": "1990-05-05T00:00:00.000",
       "picture": null,
+      "mail": "jpearson@gmail.com",
       "userName": "jpearson",
       "password": "jpearson",
-      "profile": 3
+      "profile": "Client"
     },
     {
       "firstName": "John",
       "lastName": "Purchase",
       "birthDate": "1990-01-01T00:00:00.000",
       "picture": null,
+      "mail": "jpurchase@gmail.com",
       "userName": "jpurchase",
       "password": "jpurchase",
-      "profile": 2
+      "profile": "Seller"
     },
     {
       "firstName": "John",
       "lastName": "Pearson",
       "birthDate": "1980-04-04T00:00:00.000",
       "picture": null,
+      "mail": "admin@gmail.com",
       "userName": "admin",
       "password": "admin",
-      "profile": 1
+      "profile": "Admin"
     }
   ],
   "orders": [

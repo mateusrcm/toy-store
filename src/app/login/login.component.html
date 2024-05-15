@@ -1,0 +1,56 @@
+<section class="login-form-wrapper">
+  <form
+    nz-form
+    [formGroup]="validateForm"
+    class="login-form"
+    (ngSubmit)="submitForm()"
+  >
+    <div nz-row nzJustify="center" nzAlign="middle">
+      <h1 nz-typography>LOGIN</h1>
+    </div>
+
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Please input your username!">
+        <nz-input-group nzPrefixIcon="user">
+          <input
+            type="text"
+            nz-input
+            formControlName="userName"
+            placeholder="Username"
+          />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item class="mb-2">
+      <nz-form-control nzErrorTip="Please input your Password!">
+        <nz-input-group nzPrefixIcon="lock">
+          <input
+            type="password"
+            nz-input
+            formControlName="password"
+            placeholder="Password"
+          />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+
+    <div nz-row nzJustify="space-between" nzAlign="middle" class="mb-4">
+      <div nz-col [nzSpan]="12">
+        <a class="login-form-forgot">Forgot password</a>
+      </div>
+
+      <button nz-button [nzType]="'primary'">Log in</button>
+    </div>
+
+    Don't have an account?
+    <button
+      nz-button
+      nzType="link"
+      [routerLink]="['/', 'register']"
+      class="register-button"
+    >
+      register now!
+    </button>
+  </form>
+</section>
