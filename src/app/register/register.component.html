@@ -1,1 +1,64 @@
-<p>register works!</p>
+<section class="register-form-wrapper">
+  <form
+    class="register-form"
+    nz-form
+    nzLayout="vertical"
+    [formGroup]="validateForm"
+    (ngSubmit)="submitForm()"
+  >
+    <div nz-row nzJustify="center" nzAlign="middle">
+      <h1 nz-typography>REGISTER</h1>
+    </div>
+
+    <div nz-row nzJustify="center" nzAlign="middle">
+      <nz-avatar nzSize="large" nzIcon="user"></nz-avatar>
+    </div>
+
+    <nz-form-item class="mb-2">
+      <nz-form-label nzFor="firstName">First Name</nz-form-label>
+      <nz-form-control>
+        <input nz-input name="firstName" type="firstName" id="firstName" />
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item class="mb-2">
+      <nz-form-label nzFor="lastName">Last name</nz-form-label>
+      <nz-form-control>
+        <input nz-input name="lastName" type="lastName" id="lastName" />
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item class="mb-2">
+      <nz-form-label nzFor="mail">E-mail</nz-form-label>
+      <nz-form-control>
+        <input nz-input name="mail" type="mail" id="mail" />
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item class="mb-2">
+      <nz-form-label nzFor="userName">Username</nz-form-label>
+      <nz-form-control>
+        <input nz-input name="userName" type="userName" id="userName" />
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item class="mb-2">
+      <nz-form-label nzFor="password">First Name</nz-form-label>
+      <nz-form-control>
+        <input nz-input name="password" type="password" id="password" />
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item class="mb-2">
+      <nz-form-label nzFor="birthDate">Birth Date</nz-form-label>
+      <nz-form-control>
+        <nz-date-picker
+          class="ks"
+          name="birthDate"
+          type="birthDate"
+          id="birthDate"
+        ></nz-date-picker>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+</section>

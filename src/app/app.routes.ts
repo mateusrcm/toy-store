@@ -1,5 +1,9 @@
 import { Routes } from '@angular/router';
+
 import { blockWhenLoggedInGuard } from '../shared/guards/block-when-logged-in.guard';
+import { profileGuard } from '../shared/guards/profile.guard';
+
+import { Profile } from '../shared/models/user.type';
 
 export const routes: Routes = [
   {
