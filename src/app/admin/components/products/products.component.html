@@ -1,4 +1,11 @@
-<section>
+<section nz-row nzGutter="8">
+  <div nz-col nzSpan="6">
+    <nz-card nzHoverable>
+      <i nz-icon nzType="plus"></i>
+      Insert new Product
+    </nz-card>
+  </div>
+
   @for (product of productList; track $index) {
     <ts-product-card
       nz-col
