@@ -1,12 +1,17 @@
 import { Component } from '@angular/core';
+
+import { NzIconModule } from 'ng-zorro-antd/icon';
+
 import { ProductModule } from '../../../../components/product/product.module';
-import { Product } from '../../../../components/product/product.type';
+
 import { ProductsService } from '../../../../shared/services/products.service';
+
+import { Product } from '../../../../components/product/product.type';
 
 @Component({
   selector: 'ts-products',
   standalone: true,
-  imports: [ProductModule],
+  imports: [NzIconModule, ProductModule],
   templateUrl: './products.component.html',
   styleUrl: './products.component.less',
 })

@@ -1,5 +1,22 @@
 <section>
   @for (product of productList; track $index) {
-  <ts-product-card nz-col nzSpan="6" [product]="product"></ts-product-card>
+  <ts-product-card
+    nz-col
+    nzSpan="6"
+    [product]="product"
+    [actions]="[edit, disable]"
+  ></ts-product-card>
+
+  <ng-template #edit>
+    <span nz-icon nzType="edit" nzTheme="outline"></span>
+  </ng-template>
+
+  <ng-template #disable>
+    @if(product.enabled) {
+    <span nz-icon nzType="block" nzTheme="outline"></span>
+    } @else {
+    <span nz-icon nzType="check" nzTheme="outline"></span>
+    }
+  </ng-template>
   }
 </section>

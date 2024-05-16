@@ -8,7 +8,8 @@
       "price": 199.99,
       "stock": 300,
       "averageRate": 5,
-      "avaliationsCount": 1
+      "avaliationsCount": 1,
+      "enabled": true
     }
   ],
   "product_images": [

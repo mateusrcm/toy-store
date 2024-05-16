@@ -9,6 +9,7 @@ export interface Product {
   avaliationsCount: number;
   product_avaliations: Avaliation[];
   product_images: Image[];
+  enabled: boolean;
 }
 
 export interface Avaliation {
