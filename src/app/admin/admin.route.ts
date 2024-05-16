@@ -1,10 +1,10 @@
 import { Route } from '@angular/router';
 
-import { LoginComponent } from './login.component';
+import { AdminComponent } from './admin.component';
 
 export const routes: Route[] = [
   {
     path: '',
-    component: LoginComponent,
+    component: AdminComponent,
   },
 ];

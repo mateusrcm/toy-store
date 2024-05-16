@@ -5,6 +5,17 @@
     </a>
 
     <nz-space class="action-block" nzAlign="center" [nzSize]="2">
+      <a
+        *nzSpaceItem
+        nz-button
+        ts-profile
+        nzType="text"
+        nzShape="circle"
+        [routerLink]="['/', 'admin']"
+      >
+        <span nz-icon nzType="setting" nzTheme="outline"></span>
+      </a>
+
       <button
         *nzSpaceItem
         nz-button

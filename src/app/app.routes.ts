@@ -1,6 +1,8 @@
 import { Routes } from '@angular/router';
 
 import { blockWhenLoggedInGuard } from '../shared/guards/block-when-logged-in.guard';
+import { profileGuard } from '../shared/guards/profile.guard';
+import { Profile } from '../shared/models/user.type';
 
 export const routes: Routes = [
   {
@@ -11,6 +13,11 @@ export const routes: Routes = [
     path: 'shopping-cart',
     loadChildren: () =>
       import('./shopping-cart/shopping-cart.route').then((m) => m.routes),
+  },
+  {
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.route').then((m) => m.routes),
+    canActivate: [profileGuard(Profile.Admin)],
   },
   {
     path: 'login',

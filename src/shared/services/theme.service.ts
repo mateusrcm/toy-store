@@ -8,7 +8,7 @@ export const themes: ThemeType[] = ['dark', 'light'];
 })
 export class ThemeService {
   private previousTheme!: ThemeType;
-  private _currentTheme: ThemeType = 'light';
+  private _currentTheme: ThemeType = 'dark';
 
   get currentTheme() {
     return this._currentTheme;
