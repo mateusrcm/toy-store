@@ -36,7 +36,7 @@
       nz-button
       nzType="text"
       class="previous"
-      [disabled]="currentImage === 0"
+      [disabled]="currentImage <= 0"
     >
       <i
         nz-icon
@@ -48,7 +48,8 @@
 
     <img
       nz-image
-      [nzSrc]="product.product_images[currentImage].url"
+      [nzSrc]="product.product_images[currentImage]?.url || fallback"
+      [nzPlaceholder]="fallback"
       [nzFallback]="fallback"
     />
 
@@ -56,7 +57,7 @@
       nz-button
       nzType="text"
       class="next"
-      [disabled]="currentImage === product.product_images.length - 1"
+      [disabled]="currentImage >= product.product_images.length - 1"
     >
       <i nz-icon nzType="right" nzTheme="outline" (click)="nextPic($event)"></i>
     </button>
