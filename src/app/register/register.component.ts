@@ -21,6 +21,7 @@ import {
 
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
+import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzInputModule } from 'ng-zorro-antd/input';
@@ -45,6 +46,7 @@ import { debounceTime } from 'rxjs';
     ReactiveFormsModule,
     NzDatePickerModule,
     NzTypographyModule,
+    NzDividerModule,
     NzAvatarModule,
     NzButtonModule,
     NzInputModule,

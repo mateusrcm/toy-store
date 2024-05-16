@@ -8,7 +8,7 @@
   >
     <button
       nz-button
-      class="pl-0 pt-0"
+      class="p-0"
       nzType="link"
       type="button"
       [routerLink]="['/', 'login']"
@@ -18,7 +18,7 @@
     </button>
 
     <div nz-row nzJustify="center" nzAlign="middle">
-      <h1 nz-typography>REGISTER</h1>
+      <h2 nz-typography>REGISTER</h2>
     </div>
 
     <div nz-row nzJustify="center" nzAlign="middle" class="mb-4">
@@ -51,15 +51,16 @@
       </div>
     </div>
 
-    <div nz-row [nzGutter]="16" class="mb-2">
-      <div nz-col nzLg="12" nzXs="24">
+    <div nz-row [nzGutter]="16">
+      <div nz-col nzSpan="12">
         <nz-form-item class="mb-0">
-          <nz-form-label nzFor="userName">Username</nz-form-label>
+          <nz-form-label nzFor="birthDate">Birth Date</nz-form-label>
 
           <nz-form-control nzErrorTip="This field cannot be empty!">
-            <nz-input-group nzPrefixIcon="user">
-              <input nz-input formControlName="userName" />
-            </nz-input-group>
+            <nz-date-picker
+              class="w-100"
+              formControlName="birthDate"
+            ></nz-date-picker>
           </nz-form-control>
         </nz-form-item>
       </div>
@@ -77,8 +78,22 @@
       </div>
     </div>
 
-    <div nz-row [nzGutter]="16" class="mb-2" formGroupName="passwords">
-      <div nz-col nzSpan="12">
+    <nz-divider class="mb-5"></nz-divider>
+
+    <div nz-col nzLg="12" nzXs="24" class="mb-2">
+      <nz-form-item class="mb-0">
+        <nz-form-label nzFor="userName">Username</nz-form-label>
+
+        <nz-form-control nzErrorTip="This field cannot be empty!">
+          <nz-input-group nzPrefixIcon="user">
+            <input nz-input formControlName="userName" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+
+    <ng-container formGroupName="passwords">
+      <div nz-col nzLg="12" nzXs="24" class="mb-2">
         <nz-form-item class="mb-0">
           <nz-form-label nzFor="password">Password</nz-form-label>
           <nz-form-control nzErrorTip="This field cannot be empty!">
@@ -101,7 +116,7 @@
         </nz-form-item>
       </div>
 
-      <div nz-col nzSpan="12">
+      <div nz-col nzLg="12" nzXs="24" class="mb-2">
         <nz-form-item class="mb-0">
           <nz-form-label nzFor="confirmPassword">
             Confirm Password
@@ -126,18 +141,7 @@
           </nz-form-control>
         </nz-form-item>
       </div>
-    </div>
-
-    <nz-form-item class="mb-2">
-      <nz-form-label nzFor="birthDate">Birth Date</nz-form-label>
-
-      <nz-form-control nzErrorTip="This field cannot be empty!">
-        <nz-date-picker
-          class="w-100"
-          formControlName="birthDate"
-        ></nz-date-picker>
-      </nz-form-control>
-    </nz-form-item>
+    </ng-container>
 
     <div nz-row nzAlign="middle" nzJustify="end">
       <button nz-button [nzType]="'primary'">Register</button>

@@ -8,3 +8,19 @@
 .w-100 {
   width: 100%;
 }
+
+ts-root {
+  > nz-layout {
+    min-height: 100vh;
+    overflow: hidden;
+
+    > nz-layout {
+      overflow: auto;
+      height: calc(100vh - 67px);
+
+      > *:not(router-outlet) {
+        min-height: 100%;
+      }
+    }
+  }
+}
