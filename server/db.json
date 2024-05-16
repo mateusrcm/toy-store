@@ -5,6 +5,8 @@
       "name": "Barbie",
       "description": "Barbie doll nurse.\nYes, She Can!",
       "tags": ["DOLL", "GIRL"],
+      "price": 199.99,
+      "stock": 300,
       "averageRate": 5,
       "avaliationsCount": 1
     }

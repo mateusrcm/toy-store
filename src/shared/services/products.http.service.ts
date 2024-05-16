@@ -15,7 +15,7 @@ export class ProductsHttpService {
   constructor(private http: HttpClient) {}
 
   loadProducts(page: number, qtty: number = 40): Observable<Product[]> {
-    const url = `${BASE_URL}/products?_page=${page}&_limit=${qtty}&_embed=product_avaliations&_embed=product_images`;
+    const url = `${BASE_URL}/products?_page=${page}&_limit=${qtty}&_embed=product_images`;
 
     return this.http.get<Product[]>(url);
   }

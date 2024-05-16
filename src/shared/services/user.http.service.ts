@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, map } from 'rxjs';
+import { Observable, map, tap } from 'rxjs';
 
 import { environment } from '../../environments/environment';
 
@@ -21,7 +21,8 @@ export class UserHttpService {
     return this.http.get<User[]>(url).pipe(
       map((users: User[]) => {
         return users[0];
-      })
+      }),
+      tap(userMap)
     );
   }
 
@@ -34,6 +35,11 @@ export class UserHttpService {
       headers: { 'Content-Type': 'application/json' },
     });
 
-    return this.http.post<User>(url, user);
+    return this.http.post<User>(url, user).pipe(tap(userMap));
   }
 }
+
+const userMap = (user: User): void => {
+  user.birthDate = new Date(user.birthDate);
+  user.password = null;
+};

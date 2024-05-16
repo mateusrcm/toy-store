@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { UserHttpService } from './user.http.service';
-import { Observable, map, tap } from 'rxjs';
+import { Observable, Subject, map, tap } from 'rxjs';
 import { Profile, User } from '../models/user.type';
 import { SessionStorage } from '../helpers/storage';
 import { Router } from '@angular/router';
@@ -9,16 +9,19 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class UserService {
-  isLoggedIn: boolean = false;
+  isLoggedIn: boolean = true;
+
+  private readonly _loggedIn: Subject<User> = new Subject<User>();
+  readonly loggedIn$: Observable<User> = this._loggedIn.asObservable();
 
   //#region USER PROPS
-  firstName!: string;
-  lastName!: string;
-  birthDate!: Date;
+  firstName: string = 'John';
+  lastName: string = 'Pearson';
+  birthDate: Date = new Date('1980-04-04T00:00:00.000Z');
   picture!: string;
-  mail!: string;
-  userName!: string;
-  @SessionStorage('profile') profile!: Profile;
+  mail: string = 'admin@gmail.com';
+  userName: string = 'admin';
+  @SessionStorage('profile') profile: Profile = Profile.Admin;
   //#endregion
 
   get name(): string {
@@ -66,5 +69,7 @@ export class UserService {
     this.profile = user.profile;
 
     this.isLoggedIn = true;
+
+    this._loggedIn.next(user);
   }
 }

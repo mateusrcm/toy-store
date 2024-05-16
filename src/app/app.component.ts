@@ -17,6 +17,8 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 
 import { ThemeService } from '../shared/services/theme.service';
 import { UserService } from '../shared/services/user.service';
+import { ProfileAccessDirective } from '../shared/directives/profile-access.directive';
+import { Profile } from '../shared/models/user.type';
 
 @Component({
   selector: 'ts-root',
@@ -36,6 +38,7 @@ import { UserService } from '../shared/services/user.service';
     NzSpaceModule,
     NzMenuModule,
     NzIconModule,
+    ProfileAccessDirective,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.less',
@@ -43,6 +46,14 @@ import { UserService } from '../shared/services/user.service';
 export class AppComponent {
   isCollapsed: boolean = true;
   isVisible: boolean = false;
+
+  //#region enum
+  Profile = {
+    Admin: Profile.Admin,
+    Client: Profile.Client,
+    Sellers: Profile.Sellers,
+  };
+  //#endregion
 
   //This should be memoized
   get currentTheme(): ThemeType {

@@ -8,9 +8,10 @@
       <a
         *nzSpaceItem
         nz-button
-        ts-profile
         nzType="text"
         nzShape="circle"
+        ts-profile-access
+        [tsProfiles]="[Profile.Admin]"
         [routerLink]="['/', 'admin']"
       >
         <span nz-icon nzType="setting" nzTheme="outline"></span>

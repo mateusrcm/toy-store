@@ -20,7 +20,6 @@ export class HomeComponent {
 
   ngOnInit(): void {
     this.products.loadProducts(1).subscribe((result) => {
-      console.log(result);
       this.productList = result;
     });
   }

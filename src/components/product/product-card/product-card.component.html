@@ -1,13 +1,64 @@
-<nz-card nzHoverable [nzCover]="coverTemplate" [class]="clazz" [style]="style">
-  <nz-card-meta
-    nzTitle="Europe Street beat"
-    nzDescription="www.instagram.com"
-  ></nz-card-meta>
+<nz-card
+  nzHoverable
+  [nzCover]="coverTemplate"
+  [class]="klass"
+  [style]="stile"
+  [nzActions]="actions"
+>
+  <p nz-typography class="card-title mb-0">
+    <strong>
+      {{ product.name }}
+    </strong>
+  </p>
+
+  <p nz-typography class="mb-0">
+    {{ product.description }}
+  </p>
+
+  <span
+    nz-typography
+    nz-row
+    nzJustify="space-between"
+    nzAlign="middle"
+    class="mt-1"
+  >
+    <nz-rate [ngModel]="product.averageRate" nzAllowHalf nzDisabled></nz-rate>
+
+    <strong>
+      {{ product.price | currency }}
+    </strong>
+  </span>
 </nz-card>
 
 <ng-template #coverTemplate>
-  <img
-    alt="example"
-    src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
-  />
+  <figure>
+    <button
+      nz-button
+      nzType="text"
+      class="previous"
+      [disabled]="currentImage === 0"
+    >
+      <i
+        nz-icon
+        nzType="left"
+        nzTheme="outline"
+        (click)="previousPic($event)"
+      ></i>
+    </button>
+
+    <img
+      nz-image
+      [nzSrc]="product.product_images[currentImage].url"
+      [nzFallback]="fallback"
+    />
+
+    <button
+      nz-button
+      nzType="text"
+      class="next"
+      [disabled]="currentImage === product.product_images.length - 1"
+    >
+      <i nz-icon nzType="right" nzTheme="outline" (click)="nextPic($event)"></i>
+    </button>
+  </figure>
 </ng-template>
