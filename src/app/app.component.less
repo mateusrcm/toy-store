@@ -7,8 +7,12 @@
       overflow: hidden;
 
       > nz-layout {
-        padding: @padding-sm;
         overflow: auto;
+        height: calc(100vh - 67px);
+
+        > *:not(router-outlet) {
+          min-height: 100%;
+        }
       }
     }
 
