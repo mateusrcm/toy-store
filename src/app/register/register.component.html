@@ -150,17 +150,17 @@
 </section>
 
 <ng-template #passwordErrorMessage let-control>
-  @if (control.errors?.['required']) {
-  <span>This field cannot be empty!</span>
-  } @else if (control.errors?.['passwordMismatch']) {
-  <span>Passwords do not match!</span>
+  @if (control.errors?.["required"]) {
+    <span>This field cannot be empty!</span>
+  } @else if (control.errors?.["passwordMismatch"]) {
+    <span>Passwords do not match!</span>
   }
 </ng-template>
 
 <ng-template #emailErrorMessage let-control>
-  @if (control.errors?.['required']) {
-  <span>This field cannot be empty!</span>
-  } @else if (control.errors?.['email']) {
-  <span>This must be a E-mail</span>
+  @if (control.errors?.["required"]) {
+    <span>This field cannot be empty!</span>
+  } @else if (control.errors?.["email"]) {
+    <span>This must be a E-mail</span>
   }
 </ng-template>

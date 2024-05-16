@@ -49,32 +49,28 @@
       </a>
 
       @if (isLoggedIn) {
-
-      <button
-        *nzSpaceItem
-        nz-button
-        nz-dropdown
-        nzType="link"
-        nzPlacement="bottomRight"
-        [nzDropdownMenu]="userMenu"
-      >
-        {{ greeting }}
-        <nz-avatar nzSize="small" nzIcon="user" class="ml-2"></nz-avatar>
-      </button>
-
+        <button
+          *nzSpaceItem
+          nz-button
+          nz-dropdown
+          nzType="link"
+          nzPlacement="bottomRight"
+          [nzDropdownMenu]="userMenu"
+        >
+          {{ greeting }}
+          <nz-avatar nzSize="small" nzIcon="user" class="ml-2"></nz-avatar>
+        </button>
       } @else {
-
-      <button
-        *nzSpaceItem
-        nz-button
-        nz-dropdown
-        nzType="link"
-        [routerLink]="['/', 'login']"
-      >
-        {{ "login" }}
-        <nz-avatar nzSize="small" nzIcon="user" class="ml-2"></nz-avatar>
-      </button>
-
+        <button
+          *nzSpaceItem
+          nz-button
+          nz-dropdown
+          nzType="link"
+          [routerLink]="['/', 'login']"
+        >
+          {{ "login" }}
+          <nz-avatar nzSize="small" nzIcon="user" class="ml-2"></nz-avatar>
+        </button>
       }
     </nz-space>
   </nz-header>
