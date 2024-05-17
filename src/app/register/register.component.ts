@@ -33,6 +33,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { Profile, User } from '../../shared/models/user.type';
 import { UserService } from '../../shared/services/user.service';
 import { debounceTime } from 'rxjs';
+import { updateTreeValidity } from '../../shared/helpers/form';
 
 @Component({
   selector: 'ts-register',
@@ -118,7 +119,7 @@ export class RegisterComponent {
     this.registerForm.valueChanges
       .pipe(takeUntilDestroyed(this.destroyRef), debounceTime(300))
       .subscribe(() => {
-        this.updateTreeValidity(this.registerForm);
+        updateTreeValidity(this.registerForm);
       });
   }
 
@@ -141,21 +142,8 @@ export class RegisterComponent {
         this.router.navigate(['/']);
       });
     } else {
-      this.updateTreeValidity(this.registerForm);
+      updateTreeValidity(this.registerForm);
     }
-  }
-
-  updateTreeValidity(group: FormGroup): void {
-    Object.keys(group.controls).forEach((key: string) => {
-      const abstractControl = group.controls[key];
-
-      if (abstractControl instanceof FormGroup) {
-        this.updateTreeValidity(abstractControl);
-      } else {
-        abstractControl.markAsDirty();
-        abstractControl.updateValueAndValidity();
-      }
-    });
   }
 }
 

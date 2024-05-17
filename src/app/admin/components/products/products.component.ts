@@ -67,6 +67,10 @@ export class ProductsComponent {
     this.isDrawerOpen = true;
   }
 
+  onSave(product: Product): void {
+    console.log(product);
+  }
+
   close(): void {
     this.product = null!;
     this.isDrawerOpen = false;

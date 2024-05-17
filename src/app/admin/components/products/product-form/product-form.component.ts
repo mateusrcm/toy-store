@@ -27,8 +27,9 @@ import { NzImageModule, NzImageService } from 'ng-zorro-antd/image';
 
 import { isNil } from 'ng-zorro-antd/core/util';
 
-import { Product } from '../../../../../components/product/product.type';
+import { Image, Product } from '../../../../../components/product/product.type';
 import { ProductsService } from '../../../../../shared/services/products.service';
+import { updateTreeValidity } from '../../../../../shared/helpers/form';
 
 const getBase64 = (
   file: File | undefined,
@@ -87,18 +88,7 @@ export class ProductFormComponent {
   });
 
   fileList: NzUploadFile[] = [];
-  imgList: string[] = [];
   searchValue: string = '';
-
-  beforeUpload = (file: NzUploadFile): boolean => {
-    this.fileList = this.fileList.concat(file);
-
-    getBase64(file.originFileObj).then((img) => {
-      this.imgList.push(img as string);
-    });
-
-    return false;
-  };
 
   constructor(
     private fb: NonNullableFormBuilder,
@@ -106,10 +96,12 @@ export class ProductFormComponent {
     private productService: ProductsService,
   ) {}
 
-  handlePreview = async (file: NzUploadFile): Promise<void> => {
-    const IMAGES = this.imgList.map((img) => ({ src: img }));
+  handlePreview = async (_: NzUploadFile): Promise<void> => {
+    const promises = this.fileList.map((file) => getBase64(file.originFileObj));
+    const resolved = await Promise.all(promises);
+    const images = resolved.map((img) => ({ src: img as string }));
 
-    this.nzImageService.preview(IMAGES, {
+    this.nzImageService.preview(images, {
       nzZoom: 1,
       nzRotate: 0,
       nzScaleStep: 0.5,
@@ -121,7 +113,6 @@ export class ProductFormComponent {
       const product: Product = changes['product'].currentValue;
 
       this.fileList = [];
-      this.imgList = [];
 
       this.productForm.controls.name.setValue(product.name);
       this.productForm.controls.description.setValue(product.description);
@@ -141,25 +132,47 @@ export class ProductFormComponent {
     }
   }
 
-  submitForm(): void {
+  async submitForm(): Promise<void> {
     if (this.productForm.valid) {
       const callback = (product: Product) => {
         this.saveEmitter.emit(product);
       };
 
+      const promises = this.fileList.map((file) => {
+        if (file['id']) {
+          return new Promise<Image>((resolve, reject) => {
+            resolve({
+              id: file['id'],
+              url: file.url as string,
+            });
+          });
+        }
+        return getBase64(file.originFileObj);
+      });
+      const resolved = await Promise.all(promises);
+      const images = resolved.map((img) => {
+        if (typeof img === 'string') return { url: img as string } as Image;
+        else return img as Image;
+      });
+
       const value = this.productForm.getRawValue();
+
       const product: Product = {
         ...value,
+        product_images: images,
         avaliationsCount: 0,
         averageRate: 0,
         enabled: true,
       };
 
       if (this.product.id) {
+        product.id = this.product.id;
         this.productService.put(product).subscribe(callback);
       } else {
         this.productService.post(product).subscribe(callback);
       }
+    } else {
+      updateTreeValidity(this.productForm);
     }
   }
 

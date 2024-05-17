@@ -20,6 +20,6 @@ export interface Avaliation {
 
 export interface Image {
   // TODO currently saving as base/64, change to upload image and save URL instead
-  id: number | null;
+  id?: number | null;
   url: string;
 }

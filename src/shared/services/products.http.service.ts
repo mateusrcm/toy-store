@@ -1,10 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, tap } from 'rxjs';
 
 import { environment } from '../../environments/environment';
 
-import { Product } from '../../components/product/product.type';
+import { Image, Product } from '../../components/product/product.type';
+import { isNil } from 'ng-zorro-antd/core/util';
 
 const BASE_URL = environment.base_url;
 
@@ -21,30 +22,23 @@ export class ProductsHttpService {
   }
 
   post(product: Product): Observable<Product> {
-    const url = `${BASE_URL}/products`;
+    const url = `${BASE_URL}/products_with_images`;
 
     const formattedProduct: Partial<Product> = { ...product };
     delete formattedProduct.id;
-    delete formattedProduct.product_images;
 
     return this.http.post<Product>(url, formattedProduct);
   }
 
   put(id: number, product: Product): Observable<Product> {
-    const url = `${BASE_URL}/products/${id}`;
+    const url = `${BASE_URL}/products_with_images/${id}`;
 
-    const formattedProduct: Partial<Product> = { ...product };
-    delete formattedProduct.product_images;
-
-    return this.http.put<Product>(url, formattedProduct);
+    return this.http.put<Product>(url, product);
   }
 
   patch(id: number, product: Partial<Product>): Observable<Product> {
-    const url = `${BASE_URL}/products/${id}`;
+    const url = `${BASE_URL}/products_with_images/${id}`;
 
-    const formattedProduct: Partial<Product> = { ...product };
-    delete formattedProduct.product_images;
-
-    return this.http.patch<Product>(url, formattedProduct);
+    return this.http.patch<Product>(url, product);
   }
 }
