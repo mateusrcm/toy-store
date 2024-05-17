@@ -28,6 +28,7 @@ import { NzImageModule, NzImageService } from 'ng-zorro-antd/image';
 import { isNil } from 'ng-zorro-antd/core/util';
 
 import { Product } from '../../../../../components/product/product.type';
+import { ProductsService } from '../../../../../shared/services/products.service';
 
 const getBase64 = (
   file: File | undefined,
@@ -102,6 +103,7 @@ export class ProductFormComponent {
   constructor(
     private fb: NonNullableFormBuilder,
     private nzImageService: NzImageService,
+    private productService: ProductsService,
   ) {}
 
   handlePreview = async (file: NzUploadFile): Promise<void> => {
@@ -140,7 +142,25 @@ export class ProductFormComponent {
   }
 
   submitForm(): void {
-    this.saveEmitter.emit(this.product);
+    if (this.productForm.valid) {
+      const callback = (product: Product) => {
+        this.saveEmitter.emit(product);
+      };
+
+      const value = this.productForm.getRawValue();
+      const product: Product = {
+        ...value,
+        avaliationsCount: 0,
+        averageRate: 0,
+        enabled: true,
+      };
+
+      if (this.product.id) {
+        this.productService.put(product).subscribe(callback);
+      } else {
+        this.productService.post(product).subscribe(callback);
+      }
+    }
   }
 
   cancel(): void {

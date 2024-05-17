@@ -11,23 +11,17 @@
     </strong>
   </p>
 
-  <p nz-typography class="mb-0">
+  <p nz-typography nzEllipsis [nzEllipsisRows]="2" class="mb-0">
     {{ product.description }}
   </p>
 
-  <span
-    nz-typography
-    nz-row
-    nzJustify="space-between"
-    nzAlign="middle"
-    class="mt-1"
-  >
+  <div nz-row nzJustify="space-between" nzAlign="middle" class="mt-1">
     <nz-rate [ngModel]="product.averageRate" nzAllowHalf nzDisabled></nz-rate>
 
     <strong>
       {{ product.price | currency }}
     </strong>
-  </span>
+  </div>
 </nz-card>
 
 <ng-template #coverTemplate>

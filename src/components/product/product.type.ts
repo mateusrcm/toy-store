@@ -1,5 +1,5 @@
 export interface Product {
-  id: number | null;
+  id?: number;
   name: string;
   description: string;
   tags: string[];
@@ -7,8 +7,7 @@ export interface Product {
   price: number;
   stock: number;
   avaliationsCount: number;
-  product_avaliations: Avaliation[] | null;
-  product_images: Image[] | null;
+  product_images?: Image[];
   enabled: boolean;
 }
 

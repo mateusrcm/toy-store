@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { UserHttpService } from './user.http.service';
-import { Observable, Subject, map, tap } from 'rxjs';
+import { Observable, Subject, tap } from 'rxjs';
 import { Profile, User } from '../models/user.type';
 import { SessionStorage } from '../helpers/storage';
 import { Router } from '@angular/router';
@@ -28,13 +28,16 @@ export class UserService {
     return `${this.firstName} ${this.lastName}`;
   }
 
-  constructor(private userHttp: UserHttpService, private router: Router) {}
+  constructor(
+    private userHttp: UserHttpService,
+    private router: Router,
+  ) {}
 
   login(username: string, password: string): Observable<User> {
     return this.userHttp.login(username, password).pipe(
       tap((result: User) => {
         this.assignProps(result);
-      })
+      }),
     );
   }
 
@@ -42,7 +45,7 @@ export class UserService {
     return this.userHttp.createAccount(user).pipe(
       tap((result: User) => {
         if (shouldLogin) this.assignProps(result);
-      })
+      }),
     );
   }
 

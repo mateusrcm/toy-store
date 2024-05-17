@@ -4,21 +4,32 @@
       "id": 1,
       "name": "Barbie",
       "description": "Barbie doll nurse.\nYes, She Can!",
-      "tags": ["DOLL", "GIRL"],
+      "tags": [
+        "DOLL",
+        "GIRL"
+      ],
       "price": 199.99,
       "stock": 300,
       "averageRate": 5,
       "avaliationsCount": 1,
       "enabled": true
-    }
-  ],
-  "product_images": [
+    },
     {
-      "id": 1,
-      "productId": 1,
-      "url": "base/64"
+      "id": "49bf",
+      "name": "TESTE",
+      "description": "TESTE",
+      "tags": [
+        "LEGO",
+        "CAR"
+      ],
+      "price": 123,
+      "stock": 123,
+      "avaliationsCount": 0,
+      "averageRate": 0,
+      "enabled": true
     }
   ],
+  "product_images": [],
   "product_avaliations": [
     {
       "id": 1,

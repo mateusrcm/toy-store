@@ -38,23 +38,20 @@ export class ProductsComponent {
   constructor(private products: ProductsService) {}
 
   ngOnInit(): void {
-    this.products.loadProducts(1).subscribe((result) => {
+    this.products.getAll(1).subscribe((result) => {
       this.productList = result;
     });
   }
 
   createNewProduct(): void {
     this.product = {
-      id: null,
       name: '',
-      description: 'string',
-      tags: [],
+      description: '',
+      avaliationsCount: 0,
       averageRate: 0,
       price: 0,
       stock: 0,
-      avaliationsCount: 0,
-      product_avaliations: [],
-      product_images: [],
+      tags: [],
       enabled: true,
     };
 
@@ -65,7 +62,6 @@ export class ProductsComponent {
     this.product = {
       ...product,
       tags: [...product.tags],
-      product_avaliations: [...(product.product_avaliations || [])],
       product_images: [...(product.product_images || [])],
     };
     this.isDrawerOpen = true;

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
+import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzImageModule } from 'ng-zorro-antd/image';
 import { NzSpaceModule } from 'ng-zorro-antd/space';
@@ -17,6 +18,7 @@ import { ProductItemComponent } from './product-item/product-item.component';
   imports: [
     CommonModule,
     FormsModule,
+    NzTypographyModule,
     NzButtonModule,
     NzImageModule,
     NzSpaceModule,

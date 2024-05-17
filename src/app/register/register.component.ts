@@ -102,7 +102,7 @@ export class RegisterComponent {
         ],
         confirmPassword: ['', [Validators.required, parentHasErrors]],
       },
-      { validators: [confirmPassword] }
+      { validators: [confirmPassword] },
     ),
     profile: [Profile.Client, [Validators.required]],
   });
@@ -111,7 +111,7 @@ export class RegisterComponent {
   constructor(
     private fb: NonNullableFormBuilder,
     private user: UserService,
-    private router: Router
+    private router: Router,
   ) {}
 
   ngOnInit(): void {

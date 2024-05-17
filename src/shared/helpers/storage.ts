@@ -1,16 +1,16 @@
 export function SessionStorage<T>(
-  name: string
+  name: string,
 ): (target: any, propName: string, descriptor?: PropertyDescriptor) => void {
   function propDecorator(
     target: any,
     propertyKey: string,
-    descriptor?: PropertyDescriptor
+    descriptor?: PropertyDescriptor,
   ): any {
     const privatePropName = `$$__tsPropDecorator__${propertyKey}`;
 
     if (Object.prototype.hasOwnProperty.call(target, privatePropName)) {
       console.warn(
-        `The prop "${privatePropName}" already exist, it will be overridden by ${name} decorator.`
+        `The prop "${privatePropName}" already exist, it will be overridden by ${name} decorator.`,
       );
     }
 

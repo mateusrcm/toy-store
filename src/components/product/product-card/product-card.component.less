@@ -7,10 +7,14 @@
       display: flex;
 
       max-width: 300px;
-      height: 400px;
+      height: 393px;
 
       p.card-title {
         font-size: @font-size-lg;
+      }
+
+      p[nzEllipsis] {
+        min-height: @font-size-base * @line-height-base * 2;
       }
 
       ::ng-deep {
