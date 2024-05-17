@@ -1,0 +1,128 @@
+<section>
+  <h4 nz-typography>Pictures</h4>
+
+  <nz-row nzJustify="center" class="mb-4">
+    <nz-upload
+      [nzAction]="undefined"
+      nzListType="picture-card"
+      [(nzFileList)]="fileList"
+      [nzShowButton]="fileList.length < 3"
+      [nzPreview]="handlePreview"
+    >
+      <div>
+        <span nz-icon nzType="plus"></span>
+        <div>Upload Picture</div>
+      </div>
+    </nz-upload>
+  </nz-row>
+
+  <form
+    nz-form
+    class="login-form"
+    nzLayout="vertical"
+    [formGroup]="productForm"
+    (ngSubmit)="submitForm()"
+  >
+    <nz-form-item class="mb-2">
+      <nz-form-label nzFor="name">Name</nz-form-label>
+
+      <nz-form-control nzErrorTip="This field can not be empty!">
+        <nz-input-group nzPrefixIcon="font-colors">
+          <input
+            type="text"
+            nz-input
+            formControlName="name"
+            placeholder="Name"
+          />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item class="mb-2">
+      <nz-form-label nzFor="description">Description</nz-form-label>
+
+      <nz-form-control nzErrorTip="This field can not be empty!">
+        <nz-input-group nzPrefixIcon="align-center">
+          <textarea rows="4" nz-input formControlName="description"></textarea>
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item class="mb-2">
+      <nz-form-label nzFor="price">Price</nz-form-label>
+
+      <nz-form-control nzErrorTip="This field can not be empty!">
+        <nz-input-number-group nzPrefixIcon="dollar">
+          <nz-input-number
+            formControlName="price"
+            [nzPrecision]="2"
+          ></nz-input-number>
+        </nz-input-number-group>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item class="mb-2">
+      <nz-form-label nzFor="stock">Stock</nz-form-label>
+
+      <nz-form-control nzErrorTip="This field can not be empty!">
+        <nz-input-number-group nzPrefixIcon="database">
+          <nz-input-number
+            formControlName="stock"
+            [nzMin]="0"
+            [nzStep]="1"
+            [nzPrecision]="0"
+          ></nz-input-number>
+        </nz-input-number-group>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item class="mb-4">
+      <nz-form-control nzErrorTip="This field can not be empty!">
+        <nz-form-label nzFor="tags">Tags</nz-form-label>
+
+        <nz-select
+          [nzMaxTagPlaceholder]="tagPlaceHolder"
+          nzMode="multiple"
+          nzPlaceHolder="Please select"
+          formControlName="tags"
+          (nzOnSearch)="searchTag($event)"
+          (ngModelChange)="searchValue = ''"
+        >
+          @if (searchValue) {
+            <nz-option
+              [nzLabel]="searchValue"
+              [nzValue]="searchValue"
+            ></nz-option>
+          }
+          @for (tag of product?.tags; track $index) {
+            @if (
+              !["BOY", "GIRL", "UNISEX", "DOLL", "CAR", "LEGO"].includes(tag)
+            ) {
+              <nz-option
+                [nzLabel]="tag | titlecase"
+                [nzValue]="tag"
+              ></nz-option>
+            }
+          }
+          <nz-option nzLabel="Boy" nzValue="BOY"></nz-option>
+          <nz-option nzLabel="Girl" nzValue="GIRL"></nz-option>
+          <nz-option nzLabel="Unisex" nzValue="UNISEX"></nz-option>
+          <nz-option nzLabel="Doll" nzValue="DOLL"></nz-option>
+          <nz-option nzLabel="Car" nzValue="CAR"></nz-option>
+          <nz-option nzLabel="Lego" nzValue="LEGO"></nz-option>
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-row nzJustify="end" class="mb-2">
+      <button nz-button type="button" class="mr-2" (click)="cancel()">
+        Cancel
+      </button>
+      <button nz-button nzType="primary" type="submit">Save</button>
+    </nz-row>
+  </form>
+</section>
+
+<ng-template #tagPlaceHolder let-selectedList>
+  and {{ selectedList.length }} more selected
+</ng-template>

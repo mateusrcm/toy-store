@@ -1,6 +1,6 @@
-<section nz-row nzGutter="8">
-  <div nz-col nzSpan="6">
-    <nz-card nzHoverable>
+<section nz-row nzGutter="8" class="m-0 {{ position }}">
+  <div nz-col nzLg="6" nzMd="8" nzXs="24">
+    <nz-card nzHoverable (click)="createNewProduct()">
       <i nz-icon nzType="plus"></i>
       Insert new Product
     </nz-card>
@@ -9,13 +9,20 @@
   @for (product of productList; track $index) {
     <ts-product-card
       nz-col
-      nzSpan="6"
+      nzLg="6"
+      nzMd="8"
+      nzXs="24"
       [product]="product"
       [actions]="[edit, disable]"
     ></ts-product-card>
 
     <ng-template #edit>
-      <span nz-icon nzType="edit" nzTheme="outline"></span>
+      <span
+        nz-icon
+        nzType="edit"
+        nzTheme="outline"
+        (click)="editProduct(product)"
+      ></span>
     </ng-template>
 
     <ng-template #disable>
@@ -27,3 +34,20 @@
     </ng-template>
   }
 </section>
+
+<nz-drawer
+  nzPlacement="right"
+  nzWrapClassName="product-drawer"
+  [nzClosable]="false"
+  [nzVisible]="isDrawerOpen"
+  [nzMaskClosable]="false"
+  [nzTitle]="product?.id ? 'Edit Product' : 'Create Product'"
+>
+  <ng-container *nzDrawerContent>
+    <ts-product-form
+      [product]="product"
+      (onCancel)="close()"
+      (onSave)="close()"
+    ></ts-product-form>
+  </ng-container>
+</nz-drawer>

@@ -10,11 +10,11 @@
 each(range(0,5), {
   each(@sides-set, .(@v, @k, @i){
     .p-@{value}, .p@{k}-@{value} {
-      padding-@{v}: (@value * 4px);
+      padding-@{v}: (@value * 4px) !important;
     }
 
     .m-@{value}, .m@{k}-@{value} {
-      margin-@{v}: (@value * 4px);
+      margin-@{v}: (@value * 4px) !important;
     }
   });
 });

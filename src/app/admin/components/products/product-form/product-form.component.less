@@ -1,0 +1,35 @@
+@import url("mixin");
+
+.themeMixin({
+  :host {
+    section {
+      height: calc(100% + @margin-lg * 2);
+      padding: @padding-sm;
+      margin: -@margin-lg;
+    }
+
+    nz-input-number-group {
+      width: 120px;
+    }
+
+    nz-input-number {
+      width: 100%;
+    }
+      
+    nz-upload {
+      max-width: 328px;
+    }
+
+    ::ng-deep {
+      .ant-upload-list-item-error {
+        border-color: @primary-color;
+      }
+
+      nz-upload-list {
+        .ant-upload-list-picture-card-container:nth-child(3) {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+});

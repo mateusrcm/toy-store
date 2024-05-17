@@ -3,8 +3,19 @@
 .themeMixin({
   :host {
     section {
-      height: calc(100vh - 67px);
+      &.top {
+        height: calc(100vh - 119px);
+        margin-top: -@padding-sm;
+      }
+      
+      &.left {
+        height: calc(100vh - 67px);
+      }
+
       padding: @padding-sm @padding-sm @padding-sm 0;
+    }
+
+    section {
       overflow: auto;
     }
 

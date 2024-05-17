@@ -1,6 +1,12 @@
-<nz-tabset nzTabPosition="left">
+<nz-tabset
+  [nzTabPosition]="position"
+  [class]="{
+    'pl-1': position === 'top',
+    'pr-1': position === 'top'
+  }"
+>
   <nz-tab nzTitle="Products">
-    <ts-products></ts-products>
+    <ts-products [position]="position"></ts-products>
   </nz-tab>
 
   <nz-tab nzTitle="Users">
