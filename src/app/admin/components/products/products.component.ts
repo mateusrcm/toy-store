@@ -59,16 +59,16 @@ export class ProductsComponent {
   }
 
   editProduct(product: Product): void {
-    this.product = {
-      ...product,
-      tags: [...product.tags],
-      product_images: [...(product.product_images || [])],
-    };
+    this.product = product;
     this.isDrawerOpen = true;
   }
 
   onSave(product: Product): void {
-    console.log(product);
+    const index = this.productList.indexOf(this.product);
+    this.productList.splice(index, 1, product);
+
+    this.product = null!;
+    this.isDrawerOpen = false;
   }
 
   close(): void {

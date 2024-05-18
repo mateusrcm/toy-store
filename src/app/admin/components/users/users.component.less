@@ -1,0 +1,19 @@
+@import url("mixin");
+
+.themeMixin({
+  :host {
+    section {
+      &.top {
+        height: calc(100vh - 119px);
+        margin-top: -@padding-sm;
+      }
+    
+      &.left {
+        height: calc(100vh - 67px);
+      }
+    
+      padding: @padding-sm @padding-sm @padding-sm 0;
+      overflow: auto;
+    }
+  }
+});
